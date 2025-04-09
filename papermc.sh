@@ -130,10 +130,10 @@ done
 
 eval set -- "$PARAMS"
 
-LATEST_BUILD=$(curl -s "https://papermc.io/api/v2/projects/paper/versions/${PAPERMC_VERSION}" | jq '.builds[-1]')
-LATEST_DOWNLOAD=$(curl -s "https://papermc.io/api/v2/projects/paper/versions/${PAPERMC_VERSION}/builds/${LATEST_BUILD}" | jq '.downloads.application.name' -r)
+LATEST_BUILD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${PAPERMC_VERSION}" | jq '.builds[-1]')
+LATEST_DOWNLOAD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${PAPERMC_VERSION}/builds/${LATEST_BUILD}" | jq '.downloads.application.name' -r)
 
-PAPERMC_DOWNLOAD_URL="https://papermc.io/api/v2/projects/paper/versions/${PAPERMC_VERSION}/builds/${LATEST_BUILD}/downloads/${LATEST_DOWNLOAD}"
+PAPERMC_DOWNLOAD_URL="https://api.papermc.io/v2/projects/paper/versions/${PAPERMC_VERSION}/builds/${LATEST_BUILD}/downloads/${LATEST_DOWNLOAD}"
 
 if [ -z $MOJANG_EULA_AGREE ]; then
     echo "ERROR: You must agree to the mojang EULA by passing the \"--mojang-eula-agree\" flag or by setting the environment variable \"MOJANG_EULA_AGREE=1\"."
